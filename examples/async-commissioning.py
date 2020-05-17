@@ -10,6 +10,7 @@
 
 import argparse
 import asyncio
+from dali.driver.asyncio import daliserver
 from dali.driver.hid import tridonic, hasseb
 from dali.sequences import Commissioning
 
@@ -20,6 +21,7 @@ log = logging.getLogger("commissioning")
 drivers = {
     'tridonic': tridonic,
     'hasseb': hasseb,
+    'daliserver': daliserver,
 }
 
 def print_command_and_response(dev, command, response, config_command_error):

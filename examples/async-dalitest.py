@@ -8,6 +8,7 @@ from dali.gear import emergency
 from dali.gear import led
 from dali.sequences import QueryDeviceTypes, DALISequenceError
 from dali.driver.hid import tridonic, hasseb
+from dali.driver.asyncio import daliserver
 
 def print_command_and_response(dev, command, response, config_command_error):
     # Note that these will be printed "late" because they are not
@@ -20,7 +21,8 @@ def print_command_and_response(dev, command, response, config_command_error):
         print(f"{command} -> {response}")
 
 async def main(self):
-    d = tridonic("/dev/dali/daliusb-*", glob=True, loop=loop)
+    #d = tridonic("/dev/dali/daliusb-*", glob=True, loop=loop)
+    d = daliserver(loop=loop)
 
     # This script fails with the hasseb dali master in several
     # circumstances, for example if any devices are present that have
